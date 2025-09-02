@@ -1,6 +1,9 @@
 import { createDatabaseService } from '../../lib/database.js';
 import { comparePassword, generateToken } from '../../lib/auth.js';
-import { userLoginSchema } from '../../lib/validation.js';
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
+import { D1DatabaseService } from '../../lib/database';
+import { userLoginSchema } from '../../lib/validation-workers';
 import { ApiResponse, LoginRequest } from '../../types/index.js';
 
 export default {
@@ -45,7 +48,7 @@ export default {
 
       const { callsign, password } = value;
 
-      const db = createDatabaseService(env.DB);
+          const db = new D1DatabaseService(env.DB);
 
       // Find user by callsign
       const user = await db.getUserByCallsign(callsign);

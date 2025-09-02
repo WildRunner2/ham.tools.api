@@ -18,7 +18,6 @@
     "sourceMap": true,
     "removeComments": false,
     "lib": ["ES2022", "DOM"],
-    "types": ["@cloudflare/workers-types"],
     "typeRoots": ["./node_modules/@types", "./types"]
   },
   "include": [

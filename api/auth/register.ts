@@ -1,6 +1,9 @@
 import { createDatabaseService } from '../../lib/database.js';
 import { hashPassword, generateToken, validateCallsign, validateEmail } from '../../lib/auth.js';
-import { userRegistrationSchema } from '../../lib/validation.js';
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
+import { D1DatabaseService } from '../../lib/database';
+import { userRegistrationSchema } from '../../lib/validation-workers';
 import { ApiResponse, RegisterRequest } from '../../types/index.js';
 
 export default {
@@ -66,7 +69,7 @@ export default {
         });
       }
 
-      const db = createDatabaseService(env.DB);
+          const db = new D1DatabaseService(env.DB);
 
       // Check if user already exists
       const existingUserByCallsign = await db.getUserByCallsign(callsign);

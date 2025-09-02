@@ -1,25 +1,13 @@
 name = "sp3fck-ham-tools-api"
-main = "src/index.ts"
-compatibility_date = "2023-09-01"
+main = "index.ts"
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
+account_id = "bdc040962064fa0fd02c0759d3d2fd2a"
 
 [vars]
 ENVIRONMENT = "development"
 
 [[d1_databases]]
 binding = "DB"
-database_name = "ham-tools-db"
-database_id = "your-database-id-here"
-
-[build]
-command = "npm run build"
-
-[env.production]
-name = "sp3fck-ham-tools-api"
-
-[env.production.vars]
-ENVIRONMENT = "production"
-
-[[env.production.d1_databases]]
-binding = "DB"
-database_name = "ham-tools-db-prod"
-database_id = "your-prod-database-id-here"
+database_name = "ham_tools"
+database_id = "cbf5f648-3eb3-4fff-b211-72fa118a1473"
